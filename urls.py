@@ -17,13 +17,11 @@ Including another URLconf
 
 from django.conf import settings
 from django.contrib import admin
-from django.views.static import serve
-from django.urls import path, include, re_path
+from django.views import static
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/topics/', include('topics.urls')),
     path('api/int-football/', include('int_football.urls')),
-]
-
-urlpatterns += [ re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
