@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/topics/', include('topics.urls')),
     path('api/int-football/', include('int_football.urls')),
-    path('api/image-upload/', ImageUploadView.as_view(), name="image-upload")
+    path('media/image-upload/', ImageUploadView.as_view(), name="image-upload")
 ]
 
 urlpatterns += [ re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})] 
