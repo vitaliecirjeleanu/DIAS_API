@@ -21,12 +21,14 @@ from django.urls import path, include, re_path
 from django.views.static import serve
 
 from utils.image_upload import ImageUploadView
+from utils.image_delete import ImageDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/topics/', include('topics.urls')),
     path('api/int-football/', include('int_football.urls')),
-    path('api/image-upload/', ImageUploadView.as_view(), name="image-upload")
+    path('api/image-upload/', ImageUploadView.as_view(), name="image-upload"),
+    path('api/image-delete/', ImageDeleteView.as_view(), name="image-delete")
 ]
 
 urlpatterns += [ re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})] 
