@@ -10,18 +10,22 @@ class ImageUploadView(APIView):
         serializer = ImageUploadSerializer(data=request.data)
         
         if serializer.is_valid():
-            image, dir_name = serializer.validated_data.values()
-            new_dir = os.path.join(settings.MEDIA_ROOT, 'images', dir_name)
+            try:
+                image, dir_name = serializer.validated_data.values()
+                new_dir = os.path.join(settings.MEDIA_ROOT, 'images', dir_name)
 
-            if not os.path.exists(new_dir):
-                os.makedirs(new_dir)
-            path = os.path.join(new_dir, image.name)
+                if not os.path.exists(new_dir):
+                    os.makedirs(new_dir, exist_ok=True)  
+                path = os.path.join(new_dir, image.name)
 
-            with open(path, 'wb+') as destination:
-                for chunk in image.chunks():
-                    destination.write(chunk)
+                with open(path, 'wb+') as destination:
+                    for chunk in image.chunks():
+                        destination.write(chunk)
 
-            return Response({"message":"Image uploaded successfully"}, status=status.HTTP_201_CREATED)
+                return Response({"message": "Image uploaded successfully"}, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
