@@ -11,7 +11,7 @@ class ImageUploadView(APIView):
         
         if serializer.is_valid():
             image, dir_name = serializer.validated_data.values()
-            new_dir = os.path.join(settings.MEDIA_ROOT, f'images/{dir_name}')
+            new_dir = os.path.join(settings.MEDIA_ROOT, 'images', dir_name)
 
             if not os.path.exists(new_dir):
                 os.makedirs(new_dir)
