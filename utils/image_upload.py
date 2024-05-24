@@ -15,7 +15,7 @@ class ImageUploadView(APIView):
 
             if not os.path.exists(new_dir):
                 os.makedirs(new_dir)
-            path = os.path.join(settings.MEDIA_ROOT, new_dir, image.name)
+            path = os.path.join(new_dir, image.name)
 
             with open(path, 'wb+') as destination:
                 for chunk in image.chunks():
