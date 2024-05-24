@@ -16,11 +16,6 @@ class ImageUploadView(APIView):
 
                 if not os.path.exists(new_dir):
                     os.makedirs(new_dir, exist_ok=True)  
-                path = os.path.join(new_dir, image.name)
-
-                with open(path, 'wb+') as destination:
-                    for chunk in image.chunks():
-                        destination.write(chunk)
 
                 return Response({"message": "Image uploaded successfully"}, status=status.HTTP_201_CREATED)
             except Exception as e:
