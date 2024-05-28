@@ -20,6 +20,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['https://diasapi.up.railway.app', '127.0.0.1']
 
+CORS_ALLOWED_ORIGINS = ["https://diasclient.up.railway.app","http://localhost:4200"]
 
 # Application definition
 
@@ -47,8 +48,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'urls'
 
