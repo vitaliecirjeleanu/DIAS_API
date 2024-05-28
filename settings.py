@@ -48,8 +48,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-# Add here the client url after deploy and remove CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = ['https://diasclient.up.railway.app','http://localhost:4200']
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'urls'
 
