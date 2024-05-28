@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://diasapi.up.railway.app', '127.0.0.1']
 
 
 # Application definition
@@ -49,9 +49,7 @@ MIDDLEWARE = [
 ]
 
 # Add here the client url after deploy and remove CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = []
-
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = ['https://diasclient.up.railway.app','http://localhost:4200']
 
 ROOT_URLCONF = 'urls'
 
