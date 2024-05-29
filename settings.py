@@ -18,9 +18,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://diasapi.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = [os.environ.get('RAILWAY_HOST'), os.environ.get('LOCAL_HOST')]
 
-CORS_ALLOWED_ORIGINS = ["https://diasclient.up.railway.app","http://localhost:4200"]
+CORS_ALLOWED_ORIGINS = [os.environ.get('RAILWAY_CLIENT'), os.environ.get('LOCAL_CLIENT')]
 
 # Application definition
 
